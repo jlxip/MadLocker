@@ -11,4 +11,5 @@ The script is by default in sandbox mode. It will only attack the directory ```/
 To run: ```python2.7 ./MadLocker.py```
 
 ## Dependencies
-- PyCrypto
+- PyCrypto<br>
+```sudo apt install python-crypto```
