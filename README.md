@@ -6,7 +6,9 @@ This is just a Proof of Concept. The author takes no responsibility for any give
 
 ## Quick Howto
 The script is just tested on GNU/Linux with Python 2.7.<br>
-The script is by default in sandbox mode. It will only attack the directory ```/tmp/a```. If you want to disable sandbox and go full-on, edit ```MadLocker.py``` and uncomment the line ```SANDBOX = False```
+The script is by default in sandbox mode. It will only attack the directory ```/tmp/a```. If you want to disable sandbox and go full-on, edit ```MadLocker.py``` and uncomment the line ```SANDBOX = False```<br><br>
+
+To run: ```python2.7 ./MadLocker.py```
 
 ## Dependencies
 - PyCrypto
