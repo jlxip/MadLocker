@@ -1,0 +1,2 @@
+# MadLocker
+Recursive file encryptor.
